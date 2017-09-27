@@ -21,8 +21,6 @@ class ModulesServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerNamespaces();
-
-        $this->registerModules();
     }
 
     /**
@@ -41,6 +39,7 @@ class ModulesServiceProvider extends ServiceProvider
         $this->registerServices();
         $this->setupStubPath();
         $this->registerProviders();
+        $this->registerModules();
     }
 
     /**
@@ -90,7 +89,7 @@ class ModulesServiceProvider extends ServiceProvider
      */
     protected function registerServices()
     {
-        $this->app->bindShared('modules', function ($app) {
+        $this->app->singleton('modules', function ($app) {
             $path = $app['config']->get('modules.paths.modules');
 
             return new Repository($app, $path);
