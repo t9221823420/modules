@@ -21,6 +21,8 @@ class ModulesServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerNamespaces();
+
+        $this->registerModules();
     }
 
     /**
@@ -39,7 +41,6 @@ class ModulesServiceProvider extends ServiceProvider
         $this->registerServices();
         $this->setupStubPath();
         $this->registerProviders();
-        $this->registerModules();
     }
 
     /**
