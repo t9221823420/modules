@@ -257,6 +257,8 @@ class ModuleGenerator extends Generator
         $this->generateFolders();
 
         $this->generateFiles();
+        
+        app('cache')->forget(config('modules.cache.key'));
 
         if (!$this->plain) {
             $this->generateResources();
